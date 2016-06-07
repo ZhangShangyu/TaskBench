@@ -30,5 +30,4 @@ function arrayRecursive(&$array, $function, $apply_to_keys_also = false)
     }
     $recursive_counter--;
 }
-jhjhkjhkj
 ?>
