@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="name"
+            android:gravity="center_horizontal"
+            android:id="@+id/task_name" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="team"
+            android:gravity="center_horizontal"
+            android:id="@+id/task_team" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="deadline"
+            android:gravity="center_horizontal"
+            android:id="@+id/task_deadline"
+            android:textColor="@color/red"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="startDate"
+            android:layout_gravity="bottom"
+            android:id="@+id/task_startDate" />
+
+        <com.style.histogram.HistogramView
+            android:id="@+id/task_date_schedule_chart"
+            android:layout_marginTop="20dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="25dp"
+            android:layout_gravity="top"
+            android:background="@color/chartbackground"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="schedule"
+            android:layout_gravity="bottom"
+            android:id="@+id/task_schedule" />
+
+        <com.style.histogram.HistogramView
+            android:id="@+id/task_schedule_chart"
+            android:layout_marginTop="20dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="25dp"
+            android:layout_gravity="top"
+            android:background="@color/chartbackground" />
+
+    </LinearLayout>
+
+</LinearLayout>
