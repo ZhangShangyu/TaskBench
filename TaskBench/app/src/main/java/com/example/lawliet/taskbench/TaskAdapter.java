@@ -7,9 +7,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
 
+
+import Bean.Task;
 import style.HistogramView;
 
 /**
@@ -17,7 +20,7 @@ import style.HistogramView;
  */
 public class TaskAdapter extends BaseAdapter {
 
-    private List<Map<String, Object>> data;
+    private List<Task> data;
     private LayoutInflater layoutInflater;
     private Context context;
     public TaskAdapter(Context context,List<Map<String, Object>> data){
@@ -67,8 +70,27 @@ public class TaskAdapter extends BaseAdapter {
         else{
             taskCell = (TaskCell) convertView.getTag();
         }
+        taskCell.taskName.setText((String) data.get(position).getName());
+        taskCell.taskTeam.setText((String) data.get(position).getTeam());
+        taskCell.taskSchedule.setText(String.valueOf(data.get(position).getSchedule()));
+        taskCell.taskStartTime.setText((String) data.get(position).getStartdate().toString());
+        taskCell.taskDeadline.setText((String) data.get(position).getDeadline().toString());
+        taskCell.taskScheduleChart.setProgress((double) (data.get(position).getSchedule()/100));
 
-        
+        Calendar calS = Calendar.getInstance();
+        calS.setTime(data.get(position).getStartdate());
+        Calendar calD = Calendar.getInstance();
+        calD.setTime(data.get(position).getDeadline());
+        Calendar calN = Calendar.getInstance();
+        java.util.Date now = new java.util.Date();
+        calN.setTime(new Date(now.getTime()));
+        long sl = calS.getTimeInMillis();
+        long dl = calD.getTimeInMillis();
+        long nl = calN.getTimeInMillis();
+        int dayAll = (int) (dl - sl)/(1000 * 60 * 60 * 24);
+        int dayPast = (int) (nl - sl)/(1000 * 60 * 60 * 24);
+        double percent = dayPast/dayAll;
+        taskCell.taskDateScheduleChart.setProgress(percent);
 
         return convertView;
     }
