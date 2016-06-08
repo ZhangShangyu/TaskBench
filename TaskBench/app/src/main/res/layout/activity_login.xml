@@ -27,7 +27,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/login_et_user_id"
+            android:id="@+id/loginUserId"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
     </LinearLayout>
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/login_et_password"
+            android:id="@+id/loginPassword"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
     </LinearLayout>
 
@@ -67,8 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/loginButton"
-            android:id="@+id/login_btn_login"
-            android:onClick="clickLogin"
+            android:id="@+id/loginButton"
             android:layout_gravity="center"/>
 
         <Button
@@ -76,8 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/registerButton"
-            android:id="@+id/login_btn_register"
-            android:onClick="clickRegister"
+            android:id="@+id/registerButton"
             android:layout_gravity="center"/>
     </LinearLayout>
 </LinearLayout>
