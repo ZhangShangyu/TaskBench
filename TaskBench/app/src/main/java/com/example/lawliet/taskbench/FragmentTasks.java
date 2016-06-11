@@ -3,6 +3,7 @@ package com.example.lawliet.taskbench;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,11 +38,11 @@ public class FragmentTasks extends ListFragment {
     }
 
     public List<Task> getTaskData(){
-        List<Task> tasks = new ArrayList<Task>();
+        List<Task> tasks = new ArrayList<>();
         for(int i = 0; i < 10; i++){
             Task task = new Task();
-            task.setName("taskname" + i);
-            task.setTeam("taskteam" + i);
+            task.setName("name" + i);
+            task.setTeam("team" + i);
             task.setSchedule(10 * i);
             task.setStartdate(new Date(new java.util.Date().getTime()));
             task.setDeadline(new Date(new java.util.Date().getTime()));
