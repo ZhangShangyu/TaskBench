@@ -22,6 +22,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
+import com.example.lawliet.taskbench.R;
+
 
 public class HistogramView extends View implements Runnable{
     private static final String TAG = HistogramView.class.getSimpleName();
@@ -98,13 +100,13 @@ public class HistogramView extends View implements Runnable{
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.FILL);
+        setRateBackgroundColor("#00FFFF");
         Log.d(TAG, "onDraw  rateBackgroundColor===="+rateBackgroundColor);
         if(rateBackgroundColor!=null){
             drawViewWithColor(paint,isAnim);
         }else if(rateBackgroundId!=-1){
             drawViewWithBitmap(paint, isAnim);
         }
-
     }
 
     /**
