@@ -16,7 +16,10 @@ $array = array();
 
 if($numRows == 1)
 {  
-   $array = array('code'=>1);   
+  $row  = mysql_fetch_array($check_account, MYSQL_NUM);
+  $userId = $row[0];
+
+   $array = array('code'=>1,'userId'=>$userId);
 }
 else
 {

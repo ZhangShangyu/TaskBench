@@ -100,8 +100,7 @@ public class HistogramView extends View implements Runnable{
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.FILL);
-        setRateBackgroundColor("#00FFFF");
-        Log.d(TAG, "onDraw  rateBackgroundColor===="+rateBackgroundColor);
+        setRateBackgroundColor("#93E0FF");
         if(rateBackgroundColor!=null){
             drawViewWithColor(paint,isAnim);
         }else if(rateBackgroundId!=-1){

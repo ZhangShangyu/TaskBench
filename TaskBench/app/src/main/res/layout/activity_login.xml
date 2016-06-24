@@ -18,18 +18,20 @@
         android:layout_weight="2"
         android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/loginUserId" />
 
-        <EditText
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/login_et_user_id"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/loginUserName"
+                android:hint="@string/UserName"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
+        </android.support.design.widget.TextInputLayout>
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -39,19 +41,19 @@
         android:layout_weight="2"
         android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/loginPassword"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:hint="@string/loginPassword"
+                android:id="@+id/loginPassword"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/login_et_password"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
     </LinearLayout>
 
     <LinearLayout
@@ -67,16 +69,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/loginButton"
-            android:id="@+id/login_btn_login"
+            android:id="@+id/loginButton"
+            android:layout_gravity="center"
             android:onClick="clickLogin"
-            android:layout_gravity="center"/>
+            />
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/registerButton"
-            android:id="@+id/login_btn_register"
+            android:id="@+id/registerButton"
             android:onClick="clickRegister"
             android:layout_gravity="center"/>
     </LinearLayout>

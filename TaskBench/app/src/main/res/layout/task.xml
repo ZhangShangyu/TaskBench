@@ -1,91 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:weightSum="1">
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="name"
-            android:gravity="center_horizontal"
-            android:id="@+id/task_name" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="team"
-            android:gravity="center_horizontal"
-            android:id="@+id/task_team" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="deadline"
-            android:gravity="center_horizontal"
-            android:id="@+id/task_deadline"
-            android:textColor="@color/red"/>
-    </LinearLayout>
-
-    <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:layout_marginBottom="@dimen/activity_vertical_margin">
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:gravity="left"
+        android:id="@+id/task_name" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="startDate"
-            android:layout_gravity="bottom"
-            android:id="@+id/task_startDate" />
-
-        <com.style.histogram.HistogramView
-            android:id="@+id/task_date_schedule_chart"
-            android:layout_marginTop="20dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="25dp"
-            android:layout_gravity="top"
-            android:background="@color/chartbackground"/>
+            android:layout_marginTop="@dimen/activity_vertical_margin">
 
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="team"
+                android:gravity="center_horizontal"
+                android:id="@+id/task_team" />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="startDate"
+                android:gravity="center_horizontal"
+                android:id="@+id/task_startDate" />
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="deadline"
+                android:gravity="center_horizontal"
+                android:id="@+id/task_deadline"
+                android:textColor="@color/red"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="schedule"
-            android:layout_gravity="bottom"
-            android:id="@+id/task_schedule" />
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin">
 
-        <com.style.histogram.HistogramView
-            android:id="@+id/task_schedule_chart"
-            android:layout_marginTop="20dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="25dp"
-            android:layout_gravity="top"
-            android:background="@color/chartbackground" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="startDate"
+                    android:layout_gravity="bottom"
+                    android:id="@+id/task_datePercent"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="schedule"
+                    android:layout_gravity="bottom"
+                    android:id="@+id/task_schedule" />
 
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin">
+
+                <style.HistogramView
+                    android:id="@+id/task_date_schedule_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_gravity="top"
+                    android:background="@color/chartbackground"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
+                <style.HistogramView
+                    android:id="@+id/task_schedule_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_gravity="top"
+                    android:background="@color/chartbackground" />
+
+            </LinearLayout>
+        </LinearLayout>
 </LinearLayout>

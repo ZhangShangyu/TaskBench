@@ -2,7 +2,6 @@ package com.example.lawliet.taskbench.ServerTask;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;

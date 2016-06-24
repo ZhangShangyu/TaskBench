@@ -13,9 +13,8 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.example.lawliet.taskbench.Constant.Constant;
+import com.example.lawliet.taskbench.Global.Constant;
 import com.example.lawliet.taskbench.ServerTask.VolleyController;
 
 import org.json.JSONException;
@@ -26,7 +25,7 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText et_user_id;
+    private EditText et_user_name;
     private EditText et_password;
     private ProgressDialog dialog;
 
@@ -36,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        et_user_id = (EditText)findViewById(R.id.reg_et_user_id);
+        et_user_name = (EditText)findViewById(R.id.reg_et_user_id);
         et_password = (EditText)findViewById(R.id.reg_et_password);
         dialog = new ProgressDialog(this);
     }
@@ -46,15 +45,17 @@ public class RegisterActivity extends AppCompatActivity {
         dialog.setMessage("正在注册...");
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.show();
-        final String userId = et_user_id.getText().toString().trim();
+        final String userName = et_user_name.getText().toString().trim();
         final String password = et_password.getText().toString().trim();
 
-        StringRequest req = new StringRequest(Request.Method.POST,Constant.URL_REGISTER,
+        StringRequest req = new StringRequest(Request.Method.POST, Constant.URL_REGISTER,
                 new Response.Listener<String>()
                 {
                     @Override
                     public void onResponse(String response)
                     {
+                        dialog.dismiss();
+
                         Log.e("TAG get data ",response);
                         try
                         {
@@ -63,18 +64,15 @@ public class RegisterActivity extends AppCompatActivity {
                             {
                                 if(code == 1)
                                 {
-                                    dialog.dismiss();
                                     Toast.makeText(RegisterActivity.this,"注册成功！",Toast.LENGTH_SHORT).show();
                                     startLogin();
                                 }
                                 else if(code == 2)
                                 {
-                                    dialog.dismiss();
                                     Toast.makeText(RegisterActivity.this,"注册失败,账号重复！",Toast.LENGTH_SHORT).show();
                                 }
                                 else
                                 {
-                                    dialog.dismiss();
                                     Toast.makeText(RegisterActivity.this,"服务器返回码错误！",Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -86,27 +84,27 @@ public class RegisterActivity extends AppCompatActivity {
 
                     }
                 }, new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-                        dialog.dismiss();
-                        Toast.makeText(RegisterActivity.this,"服务器错误！！",Toast.LENGTH_SHORT).show();
-                        Log.e("server data error ", error.getMessage(), error);
-                    }
-                })
-                {
-                    @Override
-                    protected Map<String, String> getParams()
-                    {
-                        //在这里设置需要post的参数
-                        Map<String, String> map = new HashMap<String, String>();
-                        map.put("userName", userId);
-                        map.put("password", password);
-                        Log.e("send data",map.toString());
-                        return map;
-                    }
-                };
+        {
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                dialog.dismiss();
+                Toast.makeText(RegisterActivity.this,"服务器错误！！",Toast.LENGTH_SHORT).show();
+                Log.e("server data error ", error.getMessage(), error);
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                //在这里设置需要post的参数
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("userName", userName);
+                map.put("password", password);
+                Log.e("send data",map.toString());
+                return map;
+            }
+        };
 
         VolleyController.getInstance(this).addToRequestQueue(req);
 
