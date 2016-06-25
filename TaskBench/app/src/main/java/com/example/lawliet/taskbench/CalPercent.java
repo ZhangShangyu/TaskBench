@@ -19,7 +19,7 @@ public class CalPercent
         try
         {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            startDateD = sdf.parse(str);
+            startDateD = sdf.parse(startDate);
         }
         catch (ParseException e)
         {
@@ -31,7 +31,7 @@ public class CalPercent
         try
         {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            deadlineD = sdf.parse(str);
+            deadlineD = sdf.parse(deadline);
         }
         catch (ParseException e)
         {
@@ -46,8 +46,8 @@ public class CalPercent
 
 
         Calendar calN = Calendar.getInstance();
-        java.util.Date now = new java.util.Date();
-        calN.setTime(new Date(now.getTime()));
+        java.util.Date cru = new java.util.Date();
+        calN.setTime(new Date(cru.getTime()));
         long sl = calS.getTimeInMillis();
         long dl = calD.getTimeInMillis();
         long nl = calN.getTimeInMillis();
