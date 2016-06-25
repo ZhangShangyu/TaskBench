@@ -203,9 +203,19 @@ public class DistributeActivity extends Activity implements DatePickerDialog.OnD
             EditText taskDescriptionED = (EditText) findViewById(R.id.distribute_dialog_taskDescription);
             this.userName = userNameED.getText().toString();
             this.taskName = taskNameED.getText().toString();
+            TextView distributeAT = (TextView) findViewById(R.id.distribute_alert_text);
             this.taskDescription = taskDescriptionED.getText().toString();
             switch (id){
                 case R.id.distribute_dialog_distributeButton:
+                    if(userName.equals(""))
+                        distributeAT.setText("User name can not be empty!");
+                    else if(taskName.equals(""))
+                        distributeAT.setText("Task name can not be empty!");
+                    else if(taskDescription.equals(""))
+                        distributeAT.setText("Task description can not be empty!");
+//                    else if(day == 0 || month == 0 || year == 0 || dayEnd == 0 || yearEnd == 0 || monthEnd == 0)
+//                        distributeAT.setText("please set the start date and deadline");
+                    else
                     clickListenerInterface.doConfirm(userName, taskName, taskDescription, teamId, leaderId, day, month, year, dayEnd, monthEnd, yearEnd);
                     break;
                 case R.id.distribute_dialog_cancelButton:

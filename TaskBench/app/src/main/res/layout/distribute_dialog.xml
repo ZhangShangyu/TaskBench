@@ -52,5 +52,12 @@
             android:layout_weight="1"
             android:layout_height="wrap_content" />
     </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/distribute_alert_text"
+        android:layout_gravity="center_horizontal" />
+
 
 </LinearLayout>

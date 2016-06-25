@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText userNameET;
     private EditText passwordET;
     private ProgressDialog dialog;
+    private TextView alertText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,24 +54,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         userNameET = (EditText) findViewById(R.id.loginUserName);
         passwordET = (EditText) findViewById(R.id.loginPassword);
+        alertText = (TextView) findViewById(R.id.alert_text);
         dialog = new ProgressDialog(this);
 
     }
 
     private void login(final String userName, final String password)
     {
-        if(userName.equals(""))
-        {
-            dialog.dismiss();
-            Toast.makeText(LoginActivity.this, "账户不能为空", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        else if(password.equals(""))
-        {
-            dialog.dismiss();
-            Toast.makeText(LoginActivity.this, "密码不能为空！", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         StringRequest req = new StringRequest(Request.Method.POST, Constant.URL_LOGIN,
                 new Response.Listener<String>() {
@@ -122,15 +113,19 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void clickLogin(View v) {
-        dialog.setMessage("正在登录...");
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.show();
-
         userName = userNameET.getText().toString().trim();
         password = passwordET.getText().toString().trim();
+        if (userName.equals("")) {
+            alertText.setText("User name can not be empty!");
+        } else if (password.equals("")) {
+            alertText.setText("Password can not be empty!");
+        } else {
+            dialog.setMessage("正在登录...");
+            dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            dialog.show();
 
-        login(userName,password);
-
+            login(userName, password);
+        }
     }
 
     public void startMainActivity()

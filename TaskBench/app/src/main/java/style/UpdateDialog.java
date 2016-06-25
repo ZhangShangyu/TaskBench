@@ -95,7 +95,14 @@ public class UpdateDialog extends Dialog{
             @Override
             public void doConfirm(int newSchedule) {
                 //数据库操作
-                updateServerData();
+                if(0<=newSchedule && newSchedule <=100)
+                {
+                    updateServerData();
+                }
+                else
+                {
+                    Toast.makeText(context, "更新进度失败！请输入1到100之间的数字", Toast.LENGTH_SHORT).show();
+                }
                 dismiss();
             }
 

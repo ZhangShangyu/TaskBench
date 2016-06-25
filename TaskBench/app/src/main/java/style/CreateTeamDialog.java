@@ -55,7 +55,14 @@ public class CreateTeamDialog extends Dialog {
             @Override
             public void doConfirm(int userId, String teamName, String teamDescription) {
                 //shujuku
-                createTeam(userId,teamName,teamDescription);
+                if(!teamName.equals("") && !teamDescription.equals(""))
+                {
+                    createTeam(userId,teamName,teamDescription);
+                }
+                else
+                {
+                    Toast.makeText(context, "请输入完整的参数！", Toast.LENGTH_SHORT).show();
+                }
                 dismiss();
             }
 

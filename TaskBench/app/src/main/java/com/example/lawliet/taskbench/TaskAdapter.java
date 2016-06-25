@@ -85,10 +85,12 @@ public class TaskAdapter extends BaseAdapter {
         taskCell.taskDeadline.setText(data.get(position).getDeadline());
         double chartSchedule = (((double) data.get(position).getSchedule()) / 100);
         taskCell.taskScheduleChart.setProgress(chartSchedule);
+//
+//        CalPercent cal = new CalPercent();
+//        double percent = cal.getPercent(data.get(position).getStartdate(),data.get(position).getDeadline());
 
-        CalPercent cal = new CalPercent();
-        double percent = cal.getPercent(data.get(position).getStartdate(),data.get(position).getDeadline());
-
+        CalPercent cp = new CalPercent();
+        double percent = cp.getPercent(data.get(position).getStartdate(), data.get(position).getDeadline());
         taskCell.taskDateScheduleChart.setProgress(percent);
         int percentInt = (int) (percent*100);
         taskCell.datePercent.setText(percentInt + "");
